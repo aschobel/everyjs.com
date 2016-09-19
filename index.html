@@ -13,9 +13,6 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="stylesheet" href="css/style.css?v=2">
 
-  <script type="text/javascript" src="http://use.typekit.com/mqp4vpt.js"></script>
-  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-
   <script type="text/javascript">
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-22688618-2']);
@@ -41,7 +38,25 @@
       <p>The list of JavaScript libraries is generated dynamically. Please enable JavaScript in your browser.</p>
     </noscript>
     <script type="text/html">
-      {{#collection contentBinding="EveryJS.listController" tagName="table"}}
+      {{#view EveryJS.SortByView}}
+        Sort by
+        <select>
+          <option value="name">Name</option>
+          <option value="size">Size</option>
+        </select>
+      {{/view}}
+      {{#view EveryJS.FilterByView}}
+      Filter by Type
+      <select>
+          <option value="all">All</option>
+          <option value="dom">DOM manipulation</option>
+          <option value="animation">Animation</option>
+          <option value="mvc">MVC</option>
+          <option value="mobile-only">Mobile-only</option>
+        </select>
+      {{/view}}
+
+      {{#collection EveryJS.ListView tagName="table"}}
       <td>
         {{#with content}}
           <a {{bindAttr href="website"}}>{{name}}</a>
@@ -100,7 +115,8 @@
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
   <script>!window.jQuery && document.write(unescape('%3Cscript src="js/libs/jquery-1.6.1.min.js"%3E%3C/script%3E'))</script>
-  <script src="js/libs/sproutcore-2.0.a.2.min.js"></script>
+  <script src="js/libs/sproutcore-2.0.a.3.min.js"></script>
+  <script src="js/data.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
